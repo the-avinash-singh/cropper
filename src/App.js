@@ -1,23 +1,43 @@
-import logo from './logo.svg';
+import ImageCrop from "./ImageCrop"
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [images,setImages]=useState(null);
+  const[newUrl,setNewUrl]=useState(null);
+  const[file,setFile]=useState('');
+
+  const onCancel=()=>{
+    setImages(null);
+}
+const handelchange=async(e)=>{
+  console.log(e.target.files[0])
+  setImages(URL.createObjectURL(e.target.files[0]));
+}
+const setCroppedImageFor=(croppedImageUrl)=>{
+  setNewUrl(croppedImageUrl)
+  onCancel()
+  console.log(newUrl)
+}
+const clicked=()=>{
+setFile("");
+}
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {images&&<ImageCrop onCancel={onCancel} setCroppedImageFor={setCroppedImageFor} image={images}/>}
+      <div className='image-card'>
+      {images&&<img src={images}
+      initCrop={images.crop}
+      initAspect={images.aspect}
+      initZoom={images.zoom}
+      />}
+      </div>
+      <input type="file" accept="image/" name="image" id="image" value={file} onChange={handelchange} onClick={clicked}/>
+      <div className='image-card'>
+      {newUrl&&<img src={newUrl}
+      alt="img"
+      />}
+    </div>
     </div>
   );
 }

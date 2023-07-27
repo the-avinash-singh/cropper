@@ -1,4 +1,9 @@
-
+.App>h1{
+  margin-left: 45%;
+}
+#image,#image1{
+  margin-left: 45%;
+}
 .imageCard {
   text-align: center;
 }

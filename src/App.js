@@ -4,7 +4,7 @@ import { useState } from 'react';
 import ImageCompressor from "./ImageCompressor";
 
 function App() {
-  const [images,setImages]=useState(null);
+  const [images,setImages]=useState(undefined);
   const[newUrl,setNewUrl]=useState(null);
   const[file,setFile]=useState('');
 
@@ -44,7 +44,7 @@ const handleCompressedImage = (compressedImage) => {
       <ImageCompressor maxSizeInMB={5} onCompressed={handleCompressedImage}/>
       <div className='image-card'>
       {newUrl&&<img src={newUrl}
-      alt="img"
+      alt="img" id="image-result"
       />}
     </div>
     </div>

@@ -81,7 +81,7 @@ const ImageCompressor = ({ maxSizeInMB, onCompressed }) => {
   };
   return (
     <div>
-      <input type="file" accept="image/*" ref={inputRef} onChange={handleImageChange}/>
+      <input type="file" id="image1" accept="image/*" ref={inputRef} onChange={handleImageChange}/>
     </div>
   );
 };

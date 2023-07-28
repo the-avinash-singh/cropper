@@ -27,6 +27,7 @@
   left: 0;
   right: 0;
   bottom: 80px;
+  cursor: move;
 }
 
 .controls {
@@ -55,4 +56,5 @@ button {
   color: white;
   border: 1px solid yellow;
   font-size: 20px;
+  cursor:pointer;
 }
